@@ -1,2 +1,8 @@
 # Update-Field-Aliases
-Python script to be used as ArcGIS custom tool, for updating a mass amount of field aliases at once, using a list of field names and corresponding aliases input by user.
+ArcGIS toolbox and associated python script to be used as ArcGIS custom tool, for updating a mass amount of field aliases at once, using a list of field names and corresponding aliases input by user.
+
+Let’s say you have an ArcGIS feature class or table with a bunch of cryptic, abbreviated field names, and you want to add aliases to make them easier to understand.  Let’s say you also have a list of field names and corresponding aliases that you have prepared in Excel or whatever.  All you need to do is save that list as a CSV file with the field names in the first column and aliases in the second column.  Then run this tool.  The only inputs required are the feature class and the CSV file.  
+
+The script uses the arcpy and csv packages.  It first reads the CSV file and parses it into a python list where each item in the list is a list containing a field name and alias value.  Then it iterates through that list, running an arcpy command that attempts to update the alias for each field name in the list.  As the tool is running, it will display a message for each field that gets an updated alias.  If a field name from your list does not exist in the feature class, the tool will display a message telling you that and move on to the next one.  It should take just a few seconds per field to run.
+
+I ran this tool successfully with ArcGIS Desktop 10.5.  I believe it could also be tweaked to work on a shapefile instead of a feature class.  It’s really a pretty simple script, and I’m probably not the first person to come up with something like this, but I couldn’t find a solution searching elsewhere.  Please let me know or suggest changes if it doesn’t work for you.
